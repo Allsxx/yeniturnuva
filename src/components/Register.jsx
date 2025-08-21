@@ -23,7 +23,7 @@ function Register() {
       return;
     }
 
-    // Supabase ile kayıt işlemi
+    
     const { data, error } = await supabase.auth.signUp({
       email,
       password,

@@ -37,7 +37,7 @@ function MyTournaments() {
   };
 
   const handleDeleteTournament = async (tournamentId, tournamentTitle) => {
-    // Silme işlemini onayla
+    
     if (!window.confirm(`"${tournamentTitle}" turnuvasını silmek istediğinize emin misiniz? Bu işlem geri alınamaz!`)) {
       return;
     }
@@ -48,7 +48,7 @@ function MyTournaments() {
       await deleteTournament(tournamentId);
       alert("Turnuva başarıyla silindi!");
 
-      // Listeyi güncelle
+      
       setTournaments(prev => prev.filter(t => t.id !== tournamentId));
     } catch (error) {
       alert("Turnuva silinirken hata oluştu: " + error.message);

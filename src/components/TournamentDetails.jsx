@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { getMatches, getPlayers, getTournament } from "../supabaseService";
 import trophy from "../assets/trophy.ico";
 
-// Lig turnuvası için puan tablosu hesaplama fonksiyonu
+
 function calculateLeagueStandings(matches, players) {
   const PUAN_KAZAN = 3;
   const PUAN_BERABERE = 1;
   
-  // Tüm oyuncuları içeren bir tablo oluştur
+  
   let tablo = {};
   Object.values(players).forEach(name => {
     tablo[name] = {
@@ -17,7 +17,7 @@ function calculateLeagueStandings(matches, players) {
     };
   });
 
-  // Maçları işle
+  
   matches.forEach(match => {
     const player1Name = players[match.player1_id];
     const player2Name = players[match.player2_id];
@@ -59,7 +59,7 @@ function calculateLeagueStandings(matches, players) {
     }
   });
   
-  // Sırala (en yüksek puan en üstte)
+  
   const sortedTable = Object.values(tablo).sort((a, b) => 
     b.P - a.P || b.AV - a.AV || b.A - a.A
   );
@@ -108,17 +108,17 @@ function TournamentDetail() {
         setMatches(matchesData);
         setPlayers(playersMap);
 
-        // Turnuva tipine göre kazananı belirle
+        
         if (tournament?.type === "league") {
-          // Lig turnuvası: puan tablosuna göre kazanan
+          
           const standings = calculateLeagueStandings(matchesData, playersMap);
           setLeagueStandings(standings);
           
           if (standings.length > 0) {
-            setKazanan(standings[0].name); // En yüksek puanlı oyuncu
+            setKazanan(standings[0].name); 
           }
         } else {
-          // Eleme veya gruplu turnuva: son maçın kazananı
+          
           if (matchesData && matchesData.length > 0) {
             const lastMatch = matchesData[matchesData.length - 1];
             if (lastMatch.winner_id && playersMap[lastMatch.winner_id]) {

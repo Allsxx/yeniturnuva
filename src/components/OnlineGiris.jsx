@@ -33,14 +33,14 @@ function OnlineGiris() {
       return;
     }
 
-    // Kullanıcıyı context'e ekle
+    
     setUser(data.user);
 
-    // Ana ekrana yönlendir
+    
     navigate("/");
   };
 
-  // Kayıt ol butonuna tıklanınca
+  
   const handleRegister = () => {
     navigate("/register");
   };

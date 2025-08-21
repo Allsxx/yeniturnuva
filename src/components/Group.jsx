@@ -11,7 +11,7 @@ import Elemination from "./Elemination";
 
 
 
-// Fikstür fonksiyonu (herkes birbiriyle oynar)
+
 function generateRoundRobinFixtures(teams) {
 
   let n = teams.length;
@@ -36,9 +36,9 @@ function generateRoundRobinFixtures(teams) {
   }
   return weeks;
 }
-// Sadece bir kez ekle
 
-// Gruplara rastgele ayırır
+
+
 function gruplaraAyir(oyuncular) {
   const shuffled = [...oyuncular].sort(() => Math.random() - 0.5);
   const gruplar = [];
@@ -48,7 +48,7 @@ function gruplaraAyir(oyuncular) {
   return gruplar;
 }
 
-// Mini lig puan tablosu (her skor değişiminde otomatik hesaplanır)
+
 function puanTablosuHesapla(grup, skorlar, fikstur) {
   const PUAN_KAZAN = 3;
   const PUAN_BERABERE = 1;
@@ -97,7 +97,7 @@ function puanTablosuHesapla(grup, skorlar, fikstur) {
   return tablo;
 }
 
-// Puan tablosu
+
 function PuanTablosu({ tablo }) {
   return (
     <table className="lig-standings-table" style={{ marginTop: 15 }}>
@@ -135,7 +135,7 @@ function PuanTablosu({ tablo }) {
   );
 }
 
-// Eleme eşleşmesini otomatik oluşturur
+
 function otomatikEslestir(oyuncular) {
   const karisik = [...oyuncular].sort(() => Math.random() - 0.5);
   const eslesmelerYeni = [];
@@ -165,7 +165,7 @@ const Group = () => {
 
   const { user } = useContext(UserContext);
   useEffect(() => {
-    // Sayfa yenileme veya ayrılma uyarısı ekle
+    
     const handleBeforeUnload = (event) => {
       event.preventDefault();
       event.returnValue = "Sayfayı yenilerseniz turnuva kapatılacaktır!";
@@ -174,7 +174,7 @@ const Group = () => {
 
     window.addEventListener("beforeunload", handleBeforeUnload);
 
-    // Bileşen unmount olduğunda temizle
+    
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };

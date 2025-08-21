@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Elemination from "./components/Elemination";
 import Group from "./components/Group";
-import Turnuva from "./components/Turnuva"; // Ana sayfa
+import Turnuva from "./components/Turnuva"; 
 import OnlineGiris from "./components/OnlineGiris";
 import Register from "./components/Register";
 import Lig from "./components/Lig";
 import Navbar from "./components/Navbar";
-import './App.css'; // CSS stillerini içe aktar
-import MyTournaments from "./components/MyTournaments"; // Geçmiş turnuvalar sayfası
-import TournamentDetail from "./components/TournamentDetails"; // Turnuva detay sayfas
-// Gerekirse diğer sayfalar...
+import './App.css'; 
+import MyTournaments from "./components/MyTournaments"; 
+import TournamentDetail from "./components/TournamentDetails"; 
+
 
 function App() {
   return (
