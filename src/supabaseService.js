@@ -2,11 +2,11 @@ import { supabase } from './supabaseClient';
 
 
 
-// supabaseService.js'e bu fonksiyonları ekleyin
 
-// Turnuvayı sil
+
+
 export async function deleteTournament(tournamentId) {
-  // Önce ilişkili kayıtları sil (turnnament_players ve matches)
+  
   await supabase
     .from('tournament_players')
     .delete()
@@ -17,7 +17,7 @@ export async function deleteTournament(tournamentId) {
     .delete()
     .eq('tournament_id', tournamentId);
 
-  // Sonra turnuvayı sil
+  
   const { error } = await supabase
     .from('tournaments')
     .delete()
@@ -27,7 +27,7 @@ export async function deleteTournament(tournamentId) {
   return { success: true };
 }
 
-// Turnuva detaylarını getir (oyuncularla birlikte)
+
 export async function getTournamentWithPlayers(id) {
   const { data: tournament, error: tournamentError } = await supabase
     .from('tournaments')
@@ -45,18 +45,18 @@ export async function getTournamentWithPlayers(id) {
   if (playersError) throw playersError;
 
   return { ...tournament, player_ids: players.map(p => p.player_id) };
-}// Oyuncu ekle
+}
 export async function addPlayer(name) {
-  // Aynı isim varsa ekleme!
+  
   const { data: existing } = await supabase
     .from('players')
     .select('*')
     .eq('name', name)
     .single();
 
-  if (existing) return existing; // varsa o kaydı döndür
+  if (existing) return existing; 
 
-  // Yoksa ekle
+  
   const { data, error } = await supabase
     .from('players')
     .insert([{ name }])
@@ -68,7 +68,7 @@ export async function addPlayer(name) {
   return data;
 }
 
-// Oyuncuları getir
+
 export async function getPlayers() {
   const { data, error } = await supabase
     .from('players')
@@ -77,13 +77,13 @@ export async function getPlayers() {
   return data;
 }
 
-// Turnuva ekle (type parametresi eklendi)
+
 export async function addTournament(title, owner, type) {
   const { data, error } = await supabase
     .from('tournaments')
     .insert([{ title, owner, type }])
-    .select() // Eklenen veriyi geri döndürür
-    .single(); // Tek bir kayıt döndürür
+    .select() 
+    .single(); 
 
   console.log("addTournament result:", { data, error });
   if (error) throw error;
@@ -91,7 +91,7 @@ export async function addTournament(title, owner, type) {
   return data;
 }
 
-// Turnuva oyuncusu ekle
+
 export async function addTournamentPlayer(tournament_id, player_id) {
   const { data, error } = await supabase
     .from('tournament_players')
@@ -101,7 +101,7 @@ export async function addTournamentPlayer(tournament_id, player_id) {
   return data;
 }
 
-// Maç ekle
+
 export async function addMatch(matchObj) {
   const { data, error } = await supabase
     .from('matches')
@@ -111,7 +111,7 @@ export async function addMatch(matchObj) {
   return data;
 }
 
-// Turnuvadaki maçları getir
+
 export async function getMatches(tournament_id) {
   const { data, error } = await supabase
     .from('matches')
@@ -121,7 +121,7 @@ export async function getMatches(tournament_id) {
   return data;
 }
 
-// Turnuva detaylarını getir
+
 export async function getTournament(id) {
   const { data, error } = await supabase
     .from('tournaments')
