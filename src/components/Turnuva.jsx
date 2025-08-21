@@ -26,7 +26,7 @@ function Turnuva() {
             <div className="card h-100">
               <img src={image} className="card-img-top" alt="elemeimage" />
               <div className="card-body">
-                <h5 className="card-title">Elemen Turnuvası</h5>
+                <h5 className="card-title">Eleme Turnuvası</h5>
                 <p className="card-text">
                   Turnuvaya katılan takımlar eleme usulüyle eşleşerek rakiplerini yenmeye çalışır. Kazanan üst tura çıkar.
                 </p>
